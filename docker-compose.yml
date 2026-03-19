@@ -1,0 +1,19 @@
+
+version: "3.8"
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    runtime: nvidia
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: crowd
+      POSTGRES_PASSWORD: crowd
+      POSTGRES_DB: crowd_db
+    ports:
+      - "5432:5432"
